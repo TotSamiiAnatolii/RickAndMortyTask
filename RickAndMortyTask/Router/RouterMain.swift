@@ -15,7 +15,7 @@ protocol RouterMain {
 
 protocol RouterProtocol: RouterMain {
     func initialViewController()
-    func showDetail(id: Int)
+    func showDetailsAboutHero(id: Int)
     func popToRoot()
 }
 
@@ -35,11 +35,12 @@ final class Router: RouterProtocol {
         navigationController.viewControllers = [mainList]
     }
     
-    func showDetail(id: Int) {
-        
+    func showDetailsAboutHero(id: Int) {
+        let detailsAboutHeroVC = assemblyBuilder.createDetailsAboutHero(id: id, router: self)
+        navigationController.pushViewController(detailsAboutHeroVC, animated: true)
     }
     
     func popToRoot() {
-        
+        navigationController.popViewController(animated: true)
     }
 }

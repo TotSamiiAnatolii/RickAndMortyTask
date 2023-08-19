@@ -11,7 +11,7 @@ protocol AssemblyBuilderProtocol {
     
     func createMainList(router: RouterProtocol) -> UIViewController
         
-    func createDetailMovie(id: Int, router: RouterProtocol) -> UIViewController
+    func createDetailsAboutHero(id: Int, router: RouterProtocol) -> UIViewController
 }
 
 final class ModuleBuilder: AssemblyBuilderProtocol {
@@ -29,8 +29,10 @@ final class ModuleBuilder: AssemblyBuilderProtocol {
         return view
     }
     
-    func createDetailMovie(id: Int, router: RouterProtocol) -> UIViewController {
-        
-        return UIViewController()
+    func createDetailsAboutHero(id: Int, router: RouterProtocol) -> UIViewController {
+        let presenter = DetailsAboutHeroPresenter(id: id, networkService: networkService, router: router)
+        let view = DetailsAboutHeroController(presenter: presenter)
+        presenter.view = view
+        return view
     }
 }
