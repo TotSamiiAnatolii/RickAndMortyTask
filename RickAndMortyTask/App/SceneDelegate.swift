@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         let navigationController = UINavigationController()
         let networkService = NetworkManager()
-        let assemblyBuilder = ModuleBuilder(networkService: networkService)
+        let assemblyBuilder = ModuleBuilder(rickAndMortyAPIManager: RickAndMortyManager(networkManager: networkService))
         let router = Router(navigationController: navigationController, assemblyBuilder: assemblyBuilder)
         router.initialViewController()
         window?.rootViewController = navigationController
@@ -53,7 +53,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
 
 }
 

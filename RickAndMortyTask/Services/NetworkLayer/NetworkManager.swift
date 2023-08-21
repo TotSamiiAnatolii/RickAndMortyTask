@@ -5,23 +5,50 @@
 //  Created by APPLE on 18.08.2023.
 //
 
-import Foundation
+import UIKit
 
-protocol NetworkServiceProtocol {
+protocol NetworkManagerProtocol {
     
-    func getList(completion: @escaping (() -> Void))
-    
-    func getDetail(id: String, completion: @escaping (() -> Void))
-    
+    func fetchModels<T: Decodable>(from url: URL?, in completion: @escaping ((Result<T, Error>) -> Void))
 }
 
-final class NetworkManager: NetworkServiceProtocol {
+final class NetworkManager: NetworkManagerProtocol {
     
-    func getList(completion: @escaping (() -> Void)) {
+    enum NetworkManagerError: Error {
         
+        case urlIsNil
     }
     
-    func getDetail(id: String, completion: @escaping (() -> Void)) {
+    public func fetchModels<T: Decodable>(from url: URL?, in completion: @escaping ((Result<T, Error>) -> Void)) {
         
+        guard let url else {
+            completion(.failure(NetworkManagerError.urlIsNil))
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            
+            if let error = error {
+                completion(.failure(error))
+                print(error.localizedDescription)
+            }
+            
+            guard let data = data else {
+                print(error?.localizedDescription ?? "No description")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let model = try decoder.decode(T.self, from: data)
+                completion(.success(model))
+            }
+            catch {
+                completion(.failure(error))
+                print("decode error: \(error)")
+            }
+        }.resume()
     }
 }
