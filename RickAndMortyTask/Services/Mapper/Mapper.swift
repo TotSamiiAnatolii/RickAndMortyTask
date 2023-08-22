@@ -30,6 +30,32 @@ final class Mapper: MapperProtocol {
     }
 }
 
+final class RickAndMortyManagerMapper: MapperProtocol {
+    
+    func map(model: EpisodesResponse) -> EpisodeDTO {
+        EpisodeDTO(
+            id: model.id,
+            name: model.name,
+            episode: model.episode,
+            created: model.created)
+    }
+    
+    func mapDTOModel(model: DetailsAboutHeroResponse, episodes: [EpisodeDTO?]) -> DetailsAboutHeroDTO {
+        DetailsAboutHeroDTO(
+            id: model.id,
+            name: model.name,
+            status: model.status,
+            species: model.species,
+            type: model.type,
+            gender: model.gender,
+            origin: model.origin,
+            location: model.location,
+            image: model.image,
+            episode: episodes.compactMap { $0 }
+        )
+    }
+}
+
 final class DetailsHeroMapper: MapperProtocol {
     
     let parser = Parser()

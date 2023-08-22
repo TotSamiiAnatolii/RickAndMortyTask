@@ -14,6 +14,10 @@ protocol DetailsAboutHeroPresenterProtocol {
     func popToRoot()
     
     func getDetailsAboutHero(id: Int)
+    
+    func viewDidLoad()
+    
+    func setViewState(stateView: StateDetailView)
 }
 
 final class DetailsAboutHeroPresenter: DetailsAboutHeroPresenterProtocol {
@@ -28,10 +32,22 @@ final class DetailsAboutHeroPresenter: DetailsAboutHeroPresenterProtocol {
 
     private let parser = Parser()
     
+    private var stateView: StateDetailView = .loading  {
+        didSet {
+            DispatchQueue.main.async {
+                self.setViewState(stateView: self.stateView)
+            }
+        }
+    }
+    
     init(id: Int, rickAndMortyAPIManager: RickAndMortyManagerProtocol, router: RouterProtocol) {
         self.rickAndMortyAPIManager = rickAndMortyAPIManager
         self.router = router
         getDetailsAboutHero(id: id)
+    }
+    
+    func viewDidLoad() {
+        setViewState(stateView: stateView)
     }
     
     func popToRoot() {
@@ -43,11 +59,25 @@ final class DetailsAboutHeroPresenter: DetailsAboutHeroPresenterProtocol {
             switch result {
             case .success(let hero):
                 DispatchQueue.main.async {
-                    self.view?.success(model: self.mapper.map(model: hero))
+                    self.stateView = .populated(self.mapper.map(model: hero))
                 }
             case .failure(let failure):
-                print(failure)
+                DispatchQueue.main.async {
+                    self.stateView = .error(failure)
+                }
             }
+        }
+    }
+    
+    func setViewState(stateView: StateDetailView) {
+        switch stateView {
+        case .loading:
+            view?.controlActivityIndicator(indicator: .main(.startAnimating))
+        case .populated(let detailHero):
+            view?.success(model: detailHero)
+            view?.controlActivityIndicator(indicator: .main(.stopAnimating))
+        case .error(let error):
+            view?.failure(error: error)
         }
     }
 }

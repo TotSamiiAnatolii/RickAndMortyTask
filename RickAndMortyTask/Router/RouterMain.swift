@@ -17,6 +17,7 @@ protocol RouterProtocol: RouterMain {
     func initialViewController()
     func showDetailsAboutHero(id: Int)
     func popToRoot()
+    func alert(title: String, message: String, btnTitle: String, action: @escaping (() -> Void))
 }
 
 final class Router: RouterProtocol {
@@ -42,5 +43,14 @@ final class Router: RouterProtocol {
     
     func popToRoot() {
         navigationController.popViewController(animated: true)
+    }
+    
+    func alert(title: String, message: String, btnTitle: String, action: @escaping (() -> Void)) {
+        let alertController = assemblyBuilder.createAlert(
+            title: title,
+            message: message,
+            btnTitle: btnTitle,
+            action: action)
+        navigationController.present(alertController, animated: true)
     }
 }

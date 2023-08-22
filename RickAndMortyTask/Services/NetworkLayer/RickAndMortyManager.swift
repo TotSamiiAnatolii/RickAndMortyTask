@@ -21,8 +21,9 @@ protocol RickAndMortyManagerProtocol {
 
 final class RickAndMortyManager: RickAndMortyManagerProtocol {
     
-    private let groupEpisodes = DispatchGroup()
     private let networkManager: NetworkManagerProtocol
+    
+    private let mapper = RickAndMortyManagerMapper()
     
     public init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager
@@ -46,12 +47,8 @@ final class RickAndMortyManager: RickAndMortyManagerProtocol {
                             
                             switch result {
                             case .success(let episode):
-                                resultItems[index] = EpisodeDTO(
-                                    id: episode.id,
-                                    name: episode.name,
-                                    episode: episode.episode,
-                                    created: episode.created
-                                )
+                                resultItems[index] = self.mapper.map(model: episode)
+                                
                             case .failure(let failure):
                                 print(failure)
                             }
@@ -59,18 +56,7 @@ final class RickAndMortyManager: RickAndMortyManagerProtocol {
                     }
                     
                     group.notify(queue: DispatchQueue.global(qos: .default)) {
-                        completion(.success(DetailsAboutHeroDTO(
-                            id: hero.id,
-                            name: hero.name,
-                            status: hero.status,
-                            species: hero.species,
-                            type: hero.type,
-                            gender: hero.gender,
-                            origin: hero.origin,
-                            location: hero.location,
-                            image: hero.image,
-                            episode: resultItems.compactMap { $0 }
-                        )))
+                        completion(.success(self.mapper.mapDTOModel(model: hero, episodes: resultItems)))
                     }
                 case .failure(let failure):
                     print(failure)
@@ -78,7 +64,6 @@ final class RickAndMortyManager: RickAndMortyManagerProtocol {
                 }
             }
         }
-        
     }
   
     // MARK: - Base requests

@@ -10,7 +10,10 @@ import UIKit
 final class DetailsAboutHeroView: UIView {
     
     var tableView: UITableView!
-
+    
+    let mainActivityIndicator = UIActivityIndicatorView()
+        .setStyleIndicator()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureVeiw()
@@ -40,6 +43,7 @@ final class DetailsAboutHeroView: UIView {
     
     private func setViewHierarhies() {
         addSubview(tableView)
+        addSubview(mainActivityIndicator)
     }
     
     private func setupConstraints() {
@@ -48,6 +52,11 @@ final class DetailsAboutHeroView: UIView {
             tableView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            mainActivityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            mainActivityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
 }

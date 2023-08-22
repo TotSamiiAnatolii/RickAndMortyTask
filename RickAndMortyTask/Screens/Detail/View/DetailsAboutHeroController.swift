@@ -12,6 +12,8 @@ protocol DetailsAboutHeroViewProtocol: AnyObject {
     func success(model: ModelDetailsAboutHero)
     
     func failure(error: Error)
+    
+    func controlActivityIndicator(indicator: LoadingIndicator)
 }
 
 final class DetailsAboutHeroController: UIViewController {
@@ -48,6 +50,7 @@ final class DetailsAboutHeroController: UIViewController {
         super.viewDidLoad()
         configureNavigationBar()
         prepareTableView()
+        presenter.viewDidLoad()
     }
     
     private func prepareTableView() {
@@ -89,7 +92,7 @@ final class DetailsAboutHeroController: UIViewController {
 }
 
 extension DetailsAboutHeroController: DetailsAboutHeroViewProtocol {
-    
+  
     func success(model: ModelDetailsAboutHero) {
         self.model = model
         
@@ -107,6 +110,16 @@ extension DetailsAboutHeroController: DetailsAboutHeroViewProtocol {
         }
         
         detailView.tableView.reloadData()
+    }
+    
+    func controlActivityIndicator(indicator: LoadingIndicator) {
+        switch indicator {
+        case .main(let state):
+            detailView.mainActivityIndicator.controlActivityIndicator(state: state)
+            
+        default:
+            break
+        }
     }
     
     func failure(error: Error) {

@@ -18,6 +18,8 @@ protocol MainListPresenterProtocol {
     func supplement()
     
     func showDetailsAboutHero(id: Int)
+    
+    func setViewState(stateView: StateViewModel)
 }
 
 final class MainListPresenter: MainListPresenterProtocol {
@@ -49,6 +51,7 @@ final class MainListPresenter: MainListPresenterProtocol {
     
     func viewDidLoad() {
         getMainList(page: startNumberPagin)
+        setViewState(stateView: stateView)
     }
     
     func getMainList(page: Int) {

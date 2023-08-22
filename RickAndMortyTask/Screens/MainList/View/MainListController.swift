@@ -36,6 +36,10 @@ final class MainListController: UIViewController {
     
     private let mainTitle = "Characters"
     
+    private var approachingTheEnd: Int {
+        mainList.count - 8
+    }
+    
     //MARK: - Init
     init(presenter: MainListPresenterProtocol) {
         self.presenter = presenter
@@ -115,7 +119,7 @@ final class MainListController: UIViewController {
             
             switch section {
             case .mainList:
-                return self.compositionalLayout.setProductFlowLayout()
+                return self.compositionalLayout.setCharactersFlowLayout()
             case .none:
                 return nil
             }
@@ -153,7 +157,7 @@ extension MainListController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        if indexPath.row == mainList.count - 2 {
+        if indexPath.row == approachingTheEnd {
             presenter.supplement()
         }
     }

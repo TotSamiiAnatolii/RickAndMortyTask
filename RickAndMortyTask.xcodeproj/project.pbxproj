@@ -59,6 +59,7 @@
 		187B0BC02A9202190029921A /* ModelMainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B0BBF2A9202190029921A /* ModelMainHeader.swift */; };
 		187B0BC22A9203940029921A /* EpisodesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B0BC12A9203940029921A /* EpisodesResponse.swift */; };
 		187B0BC62A92650A0029921A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B0BC52A92650A0029921A /* Parser.swift */; };
+		188486112A953495005C91CC /* StateDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188486102A953495005C91CC /* StateDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		187B0BBF2A9202190029921A /* ModelMainHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMainHeader.swift; sourceTree = "<group>"; };
 		187B0BC12A9203940029921A /* EpisodesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesResponse.swift; sourceTree = "<group>"; };
 		187B0BC52A92650A0029921A /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		188486102A953495005C91CC /* StateDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +318,7 @@
 				187B0BB42A9100250029921A /* ModelOriginCell.swift */,
 				187B0BB62A91007D0029921A /* ModelEpisodesCell.swift */,
 				187B0BBF2A9202190029921A /* ModelMainHeader.swift */,
+				188486102A953495005C91CC /* StateDetailView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				187B0BC22A9203940029921A /* EpisodesResponse.swift in Sources */,
 				187A5D6E2A93C6A400C5497F /* String+.swift in Sources */,
 				187B0BA02A90E78D0029921A /* DetailsAboutHeroView.swift in Sources */,
+				188486112A953495005C91CC /* StateDetailView.swift in Sources */,
 				187B0BAA2A90ED330029921A /* Images.swift in Sources */,
 				187B0B862A90AF6D0029921A /* UIStackView+MyStyle.swift in Sources */,
 				187B0BBC2A9110D10029921A /* MainHeader.swift in Sources */,
