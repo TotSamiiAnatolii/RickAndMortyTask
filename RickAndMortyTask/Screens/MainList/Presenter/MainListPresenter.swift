@@ -67,7 +67,7 @@ final class MainListPresenter: MainListPresenterProtocol {
                 self.pagingFile.pageCount = success.info.count
                 self.stateView = .populated(self.mapper.map(model: success.results))
             case .failure(let failure):
-                print(failure)
+                self.stateView = .error(failure)
             }
         }
     }
@@ -94,7 +94,14 @@ final class MainListPresenter: MainListPresenterProtocol {
         case .empty:
             view?.success(model: [])
         case .error(let error):
-            view?.failure(error: error)
+            failure(error: error)
         }
     }
+    
+    func failure(error: Error) {
+        router.alert(title: "Error", message:  error.localizedDescription, btnTitle: "Повторить") {
+            self.getMainList(page: self.pagingFile.nextPage())
+        }
+    }
+
 }
