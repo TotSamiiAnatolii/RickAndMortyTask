@@ -59,6 +59,7 @@
 		187B0BC02A9202190029921A /* ModelMainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B0BBF2A9202190029921A /* ModelMainHeader.swift */; };
 		187B0BC22A9203940029921A /* EpisodesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B0BC12A9203940029921A /* EpisodesResponse.swift */; };
 		187B0BC62A92650A0029921A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B0BC52A92650A0029921A /* Parser.swift */; };
+		187FB49E2A97C05900C9AAB1 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187FB49D2A97C05900C9AAB1 /* ImageDownloader.swift */; };
 		188486112A953495005C91CC /* StateDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188486102A953495005C91CC /* StateDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +137,7 @@
 		187B0BBF2A9202190029921A /* ModelMainHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMainHeader.swift; sourceTree = "<group>"; };
 		187B0BC12A9203940029921A /* EpisodesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesResponse.swift; sourceTree = "<group>"; };
 		187B0BC52A92650A0029921A /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		187FB49D2A97C05900C9AAB1 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		188486102A953495005C91CC /* StateDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -342,6 +344,7 @@
 		187B0B5E2A8FF6B90029921A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				187FB49C2A97C03900C9AAB1 /* ImageDownloader */,
 				187B0B982A90D52B0029921A /* PagingFile */,
 				187B0BC42A9264F60029921A /* Parser */,
 				187B0B602A8FF7090029921A /* Mapper */,
@@ -555,6 +558,14 @@
 			path = Parser;
 			sourceTree = "<group>";
 		};
+		187FB49C2A97C03900C9AAB1 /* ImageDownloader */ = {
+			isa = PBXGroup;
+			children = (
+				187FB49D2A97C05900C9AAB1 /* ImageDownloader.swift */,
+			);
+			path = ImageDownloader;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -715,6 +726,7 @@
 				187B0B6F2A9000E00029921A /* MainListCell.swift in Sources */,
 				187B0B622A8FF72D0029921A /* NetworkManager.swift in Sources */,
 				187B0B6D2A8FFE800029921A /* CompositionalLayout.swift in Sources */,
+				187FB49E2A97C05900C9AAB1 /* ImageDownloader.swift in Sources */,
 				187B0B922A90CE0D0029921A /* Mapper.swift in Sources */,
 				187B0B5B2A8FF5080029921A /* RouterMain.swift in Sources */,
 				187B0B972A90D2F80029921A /* UIImageView+ImageLoad.swift in Sources */,

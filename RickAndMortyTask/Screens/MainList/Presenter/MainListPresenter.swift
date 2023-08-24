@@ -59,6 +59,11 @@ final class MainListPresenter: MainListPresenterProtocol {
         rickAndMortyAPIManager.getMainList(page: page) { result in
             switch result {
             case .success(let success):
+                let poster = success.results.map{URL(string: $0.image)}
+                
+                poster.forEach { hero in
+                    ImageDownloader.shared.warmCache(with: hero)
+                }
                 self.pagingFile.pageCount = success.info.count
                 self.stateView = .populated(self.mapper.map(model: success.results))
             case .failure(let failure):

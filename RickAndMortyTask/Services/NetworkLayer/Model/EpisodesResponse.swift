@@ -8,6 +8,7 @@
 import Foundation
 
 struct EpisodesDTO {
+    
     let episodes: [EpisodesResponse]
 }
 
