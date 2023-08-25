@@ -103,5 +103,4 @@ final class MainListPresenter: MainListPresenterProtocol {
             self.getMainList(page: self.pagingFile.nextPage())
         }
     }
-
 }
