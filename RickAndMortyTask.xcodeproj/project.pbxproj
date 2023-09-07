@@ -61,6 +61,7 @@
 		187B0BC62A92650A0029921A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B0BC52A92650A0029921A /* Parser.swift */; };
 		187FB49E2A97C05900C9AAB1 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187FB49D2A97C05900C9AAB1 /* ImageDownloader.swift */; };
 		188486112A953495005C91CC /* StateDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188486102A953495005C91CC /* StateDetailView.swift */; };
+		1891A6072AAA3D5C0041304A /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1891A6062AAA3D5C0041304A /* NetworkMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,7 @@
 		187B0BC52A92650A0029921A /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		187FB49D2A97C05900C9AAB1 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		188486102A953495005C91CC /* StateDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDetailView.swift; sourceTree = "<group>"; };
+		1891A6062AAA3D5C0041304A /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +351,7 @@
 				187B0BC42A9264F60029921A /* Parser */,
 				187B0B602A8FF7090029921A /* Mapper */,
 				187B0B5F2A8FF6F80029921A /* NetworkLayer */,
+				1891A6052AAA3CAA0041304A /* NetworkMonitor */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -566,6 +569,14 @@
 			path = ImageDownloader;
 			sourceTree = "<group>";
 		};
+		1891A6052AAA3CAA0041304A /* NetworkMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				1891A6062AAA3D5C0041304A /* NetworkMonitor.swift */,
+			);
+			path = NetworkMonitor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -733,6 +744,7 @@
 				187B0BC62A92650A0029921A /* Parser.swift in Sources */,
 				187B0BC22A9203940029921A /* EpisodesResponse.swift in Sources */,
 				187A5D6E2A93C6A400C5497F /* String+.swift in Sources */,
+				1891A6072AAA3D5C0041304A /* NetworkMonitor.swift in Sources */,
 				187B0BA02A90E78D0029921A /* DetailsAboutHeroView.swift in Sources */,
 				188486112A953495005C91CC /* StateDetailView.swift in Sources */,
 				187B0BAA2A90ED330029921A /* Images.swift in Sources */,

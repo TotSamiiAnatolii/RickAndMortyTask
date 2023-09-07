@@ -161,7 +161,6 @@ extension DetailsAboutHeroController: UITableViewDelegate, UITableViewDataSource
             cell.configure(with: model)
             return cell
             
-            
         case let .episode(model, _):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: EpisodesCell.identifire, for: indexPath) as? EpisodesCell else {
                 return UITableViewCell() }
