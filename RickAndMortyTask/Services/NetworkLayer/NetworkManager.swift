@@ -13,12 +13,7 @@ protocol NetworkManagerProtocol {
 }
 
 final class NetworkManager: NetworkManagerProtocol {
-    
-    enum NetworkManagerError: Error {
         
-        case urlIsNil
-    }
-    
     public func fetchModels<T: Decodable>(from url: URL?, in completion: @escaping ((Result<T, Error>) -> Void)) {
         
         guard let url else {

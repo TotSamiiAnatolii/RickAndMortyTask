@@ -22,15 +22,20 @@ final class NetworkMonitor: NetworkMonitorProtocol {
     
     private let monitor: NWPathMonitor
     
+    private let queue = DispatchQueue.global(qos: .userInitiated)
+    
     private init() {
         monitor = NWPathMonitor()
     }
     
     func startMonitoring() {
-        
+        monitor.start(queue: queue)
+        monitor.pathUpdateHandler = {[weak self] path in
+            self?.isConnected = path.status != .unsatisfied
+        }
     }
-    
+
     func stopMonitoring() {
-        
+        monitor.cancel()
     }
 }

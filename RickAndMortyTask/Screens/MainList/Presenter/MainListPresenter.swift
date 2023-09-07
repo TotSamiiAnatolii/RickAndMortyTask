@@ -20,6 +20,8 @@ protocol MainListPresenterProtocol {
     func showDetailsAboutHero(id: Int)
     
     func setViewState(stateView: StateViewModel)
+    
+    func networkMonitor() -> Bool
 }
 
 final class MainListPresenter: MainListPresenterProtocol {
@@ -50,8 +52,16 @@ final class MainListPresenter: MainListPresenterProtocol {
     }
     
     func viewDidLoad() {
-        getMainList(page: startNumberPagin)
-        setViewState(stateView: stateView)
+        if networkMonitor() {
+            getMainList(page: startNumberPagin)
+            setViewState(stateView: stateView)
+        } else {
+            router.alert(title: ErrorTypes.warning.rawValue,
+                         message: ErrorTypes.internetConnection.rawValue,
+                         btnTitle: "Replace") {
+                self.viewDidLoad()
+            }
+        }
     }
     
     func getMainList(page: Int) {
@@ -102,5 +112,9 @@ final class MainListPresenter: MainListPresenterProtocol {
         router.alert(title: "Error", message:  error.localizedDescription, btnTitle: "Повторить") {
             self.getMainList(page: self.pagingFile.nextPage())
         }
+    }
+    
+    func networkMonitor() -> Bool {
+        return NetworkMonitor.shared.isConnected
     }
 }
