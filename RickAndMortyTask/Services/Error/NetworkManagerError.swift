@@ -15,4 +15,5 @@ enum NetworkManagerError: Error {
 enum ErrorTypes: String {
     case warning = "Warning"
     case internetConnection = "Please check your internet connection or try again later."
+    case error = "Error"
 }

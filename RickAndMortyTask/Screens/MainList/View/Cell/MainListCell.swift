@@ -107,7 +107,6 @@ final class MainListCell: UICollectionViewCell {
             self.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
         })
     }
-    
 }
 extension MainListCell: ConfigurableView {
     func configure(with model: ModelMainListCell) {
