@@ -109,7 +109,7 @@ final class MainListPresenter: MainListPresenterProtocol {
     }
     
     func failure(error: Error) {
-        router.alert(title: ErrorTypes.error.rawValue, message:  error.localizedDescription, btnTitle: "Повторить") {
+        router.alert(title: ErrorTypes.error.rawValue, message: error.localizedDescription, btnTitle: "Повторить") {
             self.getMainList(page: self.pagingFile.nextPage())
         }
     }

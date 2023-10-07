@@ -90,7 +90,6 @@ final class DetailsAboutHeroController: UIViewController {
         }
     }
 }
-
 extension DetailsAboutHeroController: DetailsAboutHeroViewProtocol {
   
     func success(model: ModelDetailsAboutHero) {
@@ -170,7 +169,6 @@ extension DetailsAboutHeroController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
         return heightForHeaderInSection
     }
     

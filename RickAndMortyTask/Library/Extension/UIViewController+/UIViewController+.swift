@@ -24,11 +24,9 @@ extension UIViewController {
         navigationItem.compactAppearance = appearance
         
         navigationItem.backButtonTitle = ""
-        
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = rightItem
         navigationItem.titleView = titleView
-        
         navigationController?.navigationBar.tintColor = .white
     }
 }
